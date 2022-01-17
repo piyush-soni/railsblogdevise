@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
-  skip_before_action :require_user, only: [:index, :show]
 
   def index
     @article = Article.all
@@ -13,7 +12,6 @@ class ArticlesController < ApplicationController
   def create
     #render plain: params[:article].inspect
     @article = Article.new(article_params)
-    @article.user = User.find(session[:user_id])
     if @article.save
       flash[:success] = "Article was successfully created"
       redirect_to @article

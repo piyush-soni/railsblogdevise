@@ -140,12 +140,6 @@ body {
             <ul class="nav masthead-nav">
               <li class="active"><a href="#">Home</a></li>
               <li> <%= link_to "Articles", articles_path %> </li>
-              <% if !logged_in? %>
-                <li> <%= link_to "Log In", "/login" %> </li>
-                <li> <%= link_to "Create Account", "/signup" %> </li>
-              <% else %>
-                <li> <%= link_to "Sign Out", logout_path, method:"delete" %> </li>
-              <% end %>
             </ul>
           </nav>
         </div>

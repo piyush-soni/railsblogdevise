@@ -91,44 +91,44 @@ body {
   border-bottom-color: #fff;
 }
 
-    @media (min-width: 768px) {
-      .masthead-brand {
-        float: left;
-      }
-      .masthead-nav {
-        float: right;
-      }
-    }
-
-
-    /*
-     * Cover
-     */
-
-    .cover {
-      padding: 0 20px;
-    }
-    .cover .btn-lg {
-      padding: 10px 20px;
-      font-weight: bold;
-    }
-
-    /*
-     * Affix and center
-     */
-
-    @media (min-width: 768px) {
-      /* Pull out the header and footer */
-      .masthead {
-        position: fixed;
-        top: 0;
-      }
-      /* Start the vertical centering */
-      .site-wrapper-inner {
-        vertical-align: middle;
+      @media (min-width: 768px) {
+        .masthead-brand {
+          float: left;
+        }
+        .masthead-nav {
+          float: right;
+        }
       }
 
-    }
+
+      /*
+       * Cover
+       */
+
+      .cover {
+        padding: 0 20px;
+      }
+      .cover .btn-lg {
+        padding: 10px 20px;
+        font-weight: bold;
+      }
+
+      /*
+       * Affix and center
+       */
+
+      @media (min-width: 768px) {
+        /* Pull out the header and footer */
+        .masthead {
+          position: fixed;
+          top: 0;
+        }
+        /* Start the vertical centering */
+        .site-wrapper-inner {
+          vertical-align: middle;
+        }
+
+      }
 </style>
 <div class="site-wrapper">
   <div class="site-wrapper-inner">
@@ -140,6 +140,13 @@ body {
             <ul class="nav masthead-nav">
               <li class="active"><a href="#">Home</a></li>
               <li> <%= link_to "Articles", articles_path %> </li>
+              <% if user_signed_in? %>
+                <li> <%= link_to "Edit Profile", edit_user_registration_path %> </li>
+                <li> <%= link_to "Logout", destroy_user_session_path, method: :delete %> </li>
+              <% else %>
+                <li> <%= link_to "Login", new_user_session_path %> </li>
+                <li> <%= link_to "Create Account", new_user_registration_path %> </li>
+              <% end %>
             </ul>
           </nav>
         </div>
